@@ -15,25 +15,32 @@ but hey wait, let me give you a torchlight before you begin this journey.
 
 we find it difficult to look at these terms and make sense because we often look from one perspective. ~and that does not help.~
 
-```python3
+```python
+print("hey")
+
+## result
+hey
+```
+
+```python
+import os
+print(os.getpid())
+
+## result
+488
+```
+
+```python
 import os
 from psutil import Process as p
 
-me                 = p(os.getpid())          
-me_mama            = p(me.ppid())            
-me_grama           = p(me_mama.ppid())      
-me_grama_mama      = p(me_grama.ppid())    
+me                 = p(os.getpid())
+me_mama            = p(me.ppid())
+me_grama           = p(me_mama.ppid())
+me_grama_mama      = p(me_grama.ppid())
 me_grama_mama_mama = p(me_grama_mama.ppid())
 
-print(
-me,                 
-me_mama, 
-me_grama,            
-me_grama_mama, 
-me_grama_mama_mama,
-
-sep="\n"
-)
+print(me,me_mama, me_grama, me_grama_mama,me_grama_mama_mama, sep="\n")
 ```
 
 ```shell
@@ -43,5 +50,7 @@ psutil.Process(pid=11, name='Relay(12)', status='running')
 psutil.Process(pid=10, name='SessionLeader', status='sleeping')
 psutil.Process(pid=1, name='init(Ubuntu)', status='sleeping')
 ```
+even for this simple program which prints it's pid until it reaches the pid 1, it has parents, ultimately the great** grandparent being the operating system kernel itself. 
+
 
 
